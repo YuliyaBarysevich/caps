@@ -12,7 +12,7 @@ function pickupHandler(payload){
   }, 1000)
 
   setTimeout(() => {
-    console.log('Delivered');
+    console.log(`DRIVER: delivered up ${payload.orderID}`);
     events.emit('delivered', payload)
   }, 3000)
 }
