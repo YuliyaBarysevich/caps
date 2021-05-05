@@ -23,12 +23,17 @@
 - **.env requirements** 
 i.e.
   - STORE_NAME=1-206-flowers
+  - PORT=3000
+  - HOST=http://localhost:3000
 
 ### How to initialize/run your application
 
 - Download all dependencies `npm install`
-- Create **.env** file and declare **STORE_NAME** variable 
-- Run command `node caps.js` in terminal
+- Create **.env** file and declare **STORE_NAME**, **PORT** and **HOST** variables 
+- Need to start servers up in the right order in different terminal windows so that we can visually test things out.
+  - `node caps.js`
+  - `node vendor.js`
+  - `node driver.js`
 
 
 

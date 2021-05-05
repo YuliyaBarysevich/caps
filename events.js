@@ -1,6 +1,9 @@
 'use strict'
 
-const Events = require('events');
-const events = new Events();
+// const PORT = process.env.PORT || 3000;
 
-module.exports = events;
+// const io = require('socket.io')(port)
+
+// require('./caps.js')(io);
+// require('./vendor.js')(io);
+// require('./driver.js')(io);
