@@ -10,12 +10,12 @@ const capsConnection = io.connect(`${HOST}/caps`)
 
 capsConnection.on('delivered', thankYou)
 function thankYou(payload){
-  console.log(`VENDOR: Thank you for delivering ${payload.orderID}`)
+  console.log('VENDOR: Thank you for delivering', payload.orderID)
 }
 
 setInterval(() => {
   let fakeOrder = {
-    storeName: process.env.STORE_NAME,
+    storeName: process.env.STORE_NAME || '1-800-flowers',
     orderID: faker.datatype.uuid(),
     customer: faker.name.findName(),
     address: `${faker.address.cityName()}, ${faker.address.stateAbbr()}`
