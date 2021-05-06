@@ -13,10 +13,10 @@ function pickupHandler(payload){
     console.log(`DRIVER: picked up ${payload.orderID}`)
     capsConnection.emit('in-transit', payload)
 
-  }, 1500)
+  }, 2000)
 
   setTimeout(() => {
     console.log(`DRIVER: delivered up ${payload.orderID}`);
     capsConnection.emit('delivered', payload)
-  }, 3000)
+  }, 5000)
 }

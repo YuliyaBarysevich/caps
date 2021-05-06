@@ -2,13 +2,26 @@
 
 require('dotenv').config()
 const PORT = process.env.PORT || 3000;
-
 const io = require('socket.io')(PORT)
 
+//log the client id that has connected to app
+io.on('connection', socket => {
+  console.log('APP connected user:', socket.id)
+})
 
 const caps = io.of('/caps')
 
+
 caps.on('connection', socket => {
+
+  console.log('NAMESPACE connected user:', socket.id)
+
+  socket.on('join', room => {
+    console.log('room name:', room);
+    socket.join(room)
+  })
+
+
   socket.on('pickup', payload => {
     console.log('EVENT', {event: 'pickup', date: new Date(), payload: payload})
     caps.emit('pickup', payload)
