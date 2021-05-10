@@ -1,7 +1,7 @@
 'use strict'
 
 require('dotenv').config()
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3002;
 const io = require('socket.io')(PORT)
 
 //log the client id that has connected to app
@@ -10,6 +10,8 @@ io.on('connection', socket => {
 })
 
 const caps = io.of('/caps')
+
+
 
 
 caps.on('connection', socket => {
@@ -29,12 +31,12 @@ caps.on('connection', socket => {
 
   socket.on('in-transit', payload => {
     console.log('EVENT', {event: 'in-transit', date: new Date(), payload: payload})
-    caps.emit('in-transit', payload)
+    caps.to(payload.store).emit('in-transit', payload)
   })
 
   socket.on('delivered', payload => {
     console.log('EVENT', {event: 'delivered', date: new Date(), payload: payload})
-    caps.emit('delivered', payload)
+    caps.to(payload.store).emit('delivered', payload)
   })
 })
 

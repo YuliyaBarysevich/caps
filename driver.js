@@ -6,6 +6,7 @@ const io = require('socket.io-client')
 const HOST = process.env.HOST || 'http://localhost:3000'
 const capsConnection = io.connect(`${HOST}/caps`)
 
+
 capsConnection.on('pickup', pickupHandler);
 
 function pickupHandler(payload){
